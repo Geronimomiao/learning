@@ -1,0 +1,9 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js examples"
+  }
+}
