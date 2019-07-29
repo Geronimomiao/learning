@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+  // 虚拟代理在惰性加载的应用
+  // 只有当 F2 间被按下后 才加载 miniConsole.js
+  // 在 miniConsole 加载之前 我们通常使用一个占位的 miniConsole 代理对象给用户使用
+  // 将函数全部放到缓存队列里
+  var miniConsle = (function () {
+    var cache = []
+    var handler = function (ev) {
+      if (ev.keyCode === 113) {
+        var script = document.createElement('script')
+        script.onload = function () {
+          for (var i = 0, fn; fn = cache[i++];) {
+            fn()
+          }
+        }
+        script.src = 'xxxxx/xxxxx/xxx.js'
+        document.getElementsByTagName('head')[0].appendChild(script)
+        document.body.removeEventListener('keydown', handler) // 多次按 仅加载一次
+      }
+    }
+    document.body.addEventListener('keydown', handler, false)
+    return {
+      log: function () {
+        var args = arguments
+        cache.push(function () {
+          return miniConsle.log.apply(miniConsle, args)
+        })
+      }
+    }
+  })()
+
+  miniConsle.log(11)
+
+</script>
