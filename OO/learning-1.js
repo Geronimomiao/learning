@@ -181,6 +181,76 @@
 // renderFriendList()
 
 
+// var addEvent = function (elem, type, handler) {
+//   if (window.addEventListener) {
+//     addEvent = function (elem, type, handler) {
+//       elem.addEventListener(type, handler, false)
+//     }
+//   } else if (window.attachEvent) {
+//     addEvent = function (elem, type, handler) {
+//       elem.attachEvent('on' + type, handler)
+//     }
+//   }
+//   addEvent(elem, type, handler) // 第一次调用执行
+// }
+//
+// var div = document.getElementById('div1')
+//
+// addEvent(div, 'click', function () {
+//   alert(1)
+// })
+//
+// addEvent(div, 'click', function () {
+//   alert(2)
+// })
+
+
+// var namespace1 = {
+//   a: function () {
+//     console.log(1)
+//   },
+//   b: function () {
+//     console.log(2)
+//   }
+// }
+
+
+// var MyApp = {}
+//
+// MyApp.namespace = function (name) {
+//   var parts = name.splice('.')
+//   var current = MyApp
+//   for (var i in parts) {
+//     if (!current[parts[i]]) {
+//       current[parts[i]] = {}
+//     }
+//     current = current[parts[i]]
+//   }
+// }
+//
+// MyApp.namespace('event')
+// MyApp.namespace('dom.style')
+//
+// // 等价于
+// var MyApp = {
+//   event: {},
+//   dom: {
+//     style: {}
+//   }
+// }
+
+
+// var user = (function () {
+//   var __name = 'seven',
+//       __age = 29
+//   return {
+//     getUserInfo: function () {
+//       return __name + '-' + __age
+//     }
+//   }
+// })()
+
+
 
 
 
