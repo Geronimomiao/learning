@@ -5,6 +5,54 @@
     <title>Title</title>
 </head>
 <body>
-
+<input type="text" value="0" id="number">
+<button type="submit" id="add">增加100以内的随机数</button>
+<button type="submit" id="revoke">返回上一步</button>
 </body>
 </html>
+<script>
+  let addBtn = document.getElementById('add'),
+    revokeBtn = document.getElementById('revoke'),
+    numberText = document.getElementById('number'),
+    lastNumber = 0;
+
+  let setCommond = (button, command) => {
+    button.onclick = function () {
+      command.execute();
+    }
+  };
+
+  let MenuBar = {
+    add() {
+      lastNumber = numberText.value;
+      numberText.value = parseInt(numberText.value) + parseInt(Math.random() * 100);
+      console.log(numberText.value);
+    },
+    revoke() {
+      numberText.value = lastNumber;
+      console.log(numberText.value);
+    }
+  };
+
+  let AddCommand = (receiver) => {
+    return {
+      execute() {
+        receiver.add()
+      }
+    }
+  };
+
+  let RevokeCommand = (receiver) => {
+    return {
+      execute() {
+        receiver.revoke()
+      }
+    }
+  };
+
+  let addCommand = AddCommand(MenuBar);
+  setCommond(addBtn, addCommand);
+  let revokeCommand = RevokeCommand(MenuBar);
+  setCommond(revokeBtn, revokeCommand);
+
+</script>
