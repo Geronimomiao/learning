@@ -77,7 +77,7 @@ var Upload = function (uploadType) {
 };
 
 Upload.prototype.delFile = function (id) {
-  uploadManager.setExternalState(id, this);
+  uploadManager.setExternalState(id, this); // 可以在后面代码 获取该对象的数据属性
   if (this.fileSize < 3000) {
     return this.dom.parentNode.removeChild(this.dom);
   }
