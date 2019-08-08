@@ -51,5 +51,26 @@ Light.prototype.setState = function (newState) {
 var light = new Light();
 light.init();
 
+// Light() 状态类
+// 状态对象也需要持有对 Light() 对象的引用
+// 在状态类中定义一些共同的行为方法 在本列中 buttonWasPressed
+// 则无论增加多少状态类 都要实现  buttonWasPressed 方法 但遗憾的是 javascript 没有抽象类或接口概念
+
+var State = function () {};
+State.prototype.buttonWasPressed = function () {
+  throw new Error('父类的 buttonWasPressed 方法必须重写');
+};
+
+var SuperStrongLightState = function (light) {
+  this.light = light;
+};
+
+StrongLightState.prototype = new State(); // 继承抽象父类
+StrongLightState.prototype.buttonWasPressed = function () {  // 重写 buttonWasPressed 方法
+  console.log('关灯');
+  this.light.setState(this.light.offLightState);
+};
+
+
 
 
