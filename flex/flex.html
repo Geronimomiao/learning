@@ -1,64 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>css阻塞</title>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        .dad {
-            display: flex;
-            /*justify-content: center;*/
-            /*align-items: flex-end;*/
-            background-color: #999;
-            flex-direction: row;
-            height: 900px;
-        }
-
-        .son {
-            margin: 6px;
-            height: 200px;
-        }
-
-        .son1 {
-            background-color: #333;
-            flex: 10px 1;
-            /*align-self: flex-start;*/
-        }
-
-        .son2 {
-            background-color: #fff;
-            flex: 20px 1;
-        }
-
-        .son3 {
-            background-color: #555;
-            width: 30px;
-            /*flex: none;*/
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded');
+      })
+    </script>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<ul id="list">
-    <li id="item1">item1</li>
-    <li id="item2">item2</li>
-    <li id="item3">item3</li>
-</ul>
 </body>
 </html>
-
-
-<script>
-  var item1 = document.getElementById("item1");
-  var item2 = document.getElementById("item2");
-  var item3 = document.getElementById("item3");
-  document.addEventListener("click", function (event) {
-    console.log(event)
-    var target = event.target;
-    if (target == item1) {
-      alert("hello item1");
-    } else if (target == item2) {
-      alert("hello item2");
-    } else if (target == item3) {
-      alert("hello item3");
-    }
-  })
-</script>
