@@ -32,8 +32,8 @@ var plugin = (function () {
 var Upload = function (fileName) {
   this.plugin = plugin;
   this.fileName = fileName;
-  this.btn1 = null;
-  this.btn2 = null;
+  this.button1 = null;
+  this.button2 = null;
   this.signState = new SignState(this);
   this.uploadingState = new UploadingState(this);
   this.pauseState = new PauseState(this);
@@ -187,3 +187,12 @@ window.external.upload = function (state) {
 };
 
 window.external.upload('sign');
+
+setTimeout(function () {
+  window.external.upload('uploading');
+},1000);
+
+setTimeout(function () {
+  window.external.upload('done');
+},3000);
+
